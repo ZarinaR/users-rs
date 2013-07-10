@@ -1,0 +1,8 @@
+
+{
+"user_infos": [
+{ "fname":"John" , "lname":"Doe", "idString":"1234" }, 
+{ "fname":"Anna" , "lname":"Smith", "idString":"4434"  }, 
+{ "fname":"Peter" , "lname":"Jones", "idString":"5534"  }
+]
+}

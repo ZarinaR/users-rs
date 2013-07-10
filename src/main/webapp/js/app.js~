@@ -1,0 +1,53 @@
+App = Ember.Application.create({});
+
+//add route
+App.Router.map( function(){
+	this.resource('addUser');
+	this.resource('removeUser');
+	this.resource('displayAllUsers', function(){
+		//nested route
+		this.resource('user', {path:':user_id'})
+
+});
+});
+
+//when we visit displayAllUsers we assosiate which models we want to use
+App.DisplayAllUsersRoute=Ember.Route.extend({
+	model:function(){
+	//return all the User models
+	return App.User.find();
+	}
+});
+
+
+App.Store=DS.Store.extend({
+	revision:12,
+	adapter: DS.RESTAdapter.extend({
+		url:'http://localhost:8000'
+	})
+	
+});
+
+//User Model
+App.User=DS.Model.extend({
+	
+	fname: DS.attr('string'),
+	lname: DS.attr('string')
+});
+
+
+//add controller to a AddUser template
+App.UserController=Ember.ObjectController.extend({
+	isEditing: false,
+	edit:function(){
+		this.set('isEditing', true);
+	},
+	 done: function() {
+  	 this.set('isEditing', false);
+    	 this.get('transaction').commit();
+  }
+
+});
+
+
+

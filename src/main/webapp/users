@@ -1,0 +1,8 @@
+
+{
+"users": [
+{  "id":1, "fname":"Zarina" , "lname":"R" },
+{ "id":2,"fname":"Anna" , "lname":"Smith"  }, 
+{ "id":3,"fname":"Peter" , "lname":"Jones" }
+]
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Ember Starter Kit</title>
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+
+  
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Id Cards</a>
+        <ul class="nav">
+           <li>{{#linkTo 'addUser'}}Add User{{/linkTo }}</li>
+           <li>{{#linkTo 'removeUser'}}Remove User{{/linkTo }}</li>
+           <li>{{#linkTo 'retrieve'}}Get by Id{{/linkTo }}</li>
+           <li>{{#linkTo 'displayAllUsers'}}Display All Users{{/linkTo }}</li>
+          
+        </ul>
+      </div>
+    </div>
+
+  {{outlet}}
+
+
+
+  </script>
+
+
+  <script type="text/x-handlebars" id="addUser">
+       
+  
+    <div class="span9">
+     <form class="form-horizontal" {{action "addNewUser" on="submit"}}>
+        <div class="control-group">
+           <div class="control-label">
+             <label>First Name</label>
+           </div>
+
+          <div class="controls">
+
+              {{view Ember.TextField valueBinding='fname' placeholder="fill in first name"}}
+             
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <label>Last Name</label>
+          </div>
+
+          <div class="controls">
+            {{view Ember.TextField valueBinding='lname' placeholder="fill in last name"}}
+           
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <div class="control-label">
+           <label>ID number</label>
+          </div>
+
+          <div class="controls">
+            {{view Ember.TextField valueBinding='userId' placeholder="fill in ID"}}
+           
+            
+            <br>
+            <br>
+
+            <button class="btn">Save</button>
+
+
+          </div>
+
+  
+        </div>
+
+      </form>
+    </div>
+
+
+  
+  
+  
+  </script>
+
+  <script type="text/x-handlebars" id="removeUser">
+    
+
+<div class="span9">
+  <form class="form-horizontal" {{action "removeUser" on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>User ID</label>
+    </div>
+
+    <div class="controls">
+
+    {{input value=usern type="text"}}
+    </div>
+  </div>
+
+ 
+  <div class="controls">
+  <br>
+  <br>
+  <button type="submit" class="btn">Remove</button>
+    </div>
+  </div>
+
+
+  </script>
+
+
+
+  <script type="text/x-handlebars" id="displayAllUsers">
+   
+  <div align="center"> 
+	
+  <table class='table'>
+           
+              <tr><th>Firs name</th><th>Last Name</th> <th>ID</th></tr>
+          
+           {{#each model}}
+            <tr><td>
+             {{fname}}</td> <td>{{lname}}</td> <td>{{id}} 
+            </td></tr>
+      {{/each}}
+            
+          </table>
+  </div>  
+  
+  </script>
+  
+  
+  
+
+  
+  <script type="text/x-handlebars" id="retrieve">
+    
+
+  <<div class="span9">
+  <form class="form-horizontal" {{action "getUser" on="submit"}}>
+  <div class="control-group">
+    <div class="control-label">
+      <label>User ID</label>
+    </div>
+
+    <div class="controls">
+
+
+      {{input value=usern type="text"}}
+    </div>
+  </div>
+
+ 
+  <div class="controls">
+  <br>
+  <br>
+  <button type="submit" class="btn">Get</button>
+    </div>
+  </div>
+
+
+
+  </script>
+
+
+  
+
+
+
+  <script src="js/libs/jquery-1.10.1.min.js"></script>
+  <script src="js/libs/handlebars1.0.0-rc.4.js"></script>
+  <script src="js/libs/ember-1.0.0-rc.5.js"></script>
+  <script src="js/libs/ember-data-master.js"></script>
+  <script src="js/libs/showdown.js"></script>
+  <script src="js/libs/moment.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/localstorage_adapter.js"></script>
+
+</body>
+</html>
+
